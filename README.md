@@ -1,2 +1,2 @@
-# today-list
-To-do list with recurring daily tasks.
+# To-Day List
+To-do list with recurring tasks.
