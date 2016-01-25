@@ -1,0 +1,28 @@
+{
+  "name": "today-list",
+  "version": "0.1.0",
+  "description": "To-do list for daily tasks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReactiveApps/today-list.git"
+  },
+  "author": "RonnieSan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReactiveApps/today-list/issues"
+  },
+  "homepage": "https://github.com/ReactiveApps/today-list#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "lodash": "^4.0.0",
+    "rethinkdb": "^2.2.1",
+    "rethinkdbdash": "^2.2.17"
+  }
+}
