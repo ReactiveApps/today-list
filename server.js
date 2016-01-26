@@ -35,8 +35,7 @@ api_router.route('/:table')
 	.get(function(req, res) {
 
 		// Get records from database table
-		r.db('ToDay_List').table(req.params.table)
-			.run()
+		DB[req.params.table].get()
 			.then(function(result) {
 				res.status(200).json(result);
 			})
