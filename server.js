@@ -7,9 +7,9 @@ var config = require('config');
 
 // Import dependencies
 var _       = require('lodash');
+var DB      = require('lib/DB');
 var express = require('express');
 var fs      = require('fs');
-var r       = require('rethinkdbdash')();
 
 // Initialize express app
 var app = express();
@@ -17,6 +17,7 @@ var app = express();
 // API Router
 var api_router = express.Router();
 
+// Use the JSON body parser for all API routes
 api_router.use('/', require('body-parser').json());
 
 // API Home
