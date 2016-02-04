@@ -28,6 +28,22 @@ api_router.route('/')
 		});
 	});
 
+// Auth route
+api_router.route('/auth')
+	.post(function(req, res) {
+		DB.UsersService.auth(req.body.email, req.body.password)
+			.then(function(token) {
+				res.status(200).json({
+					token : token
+				});
+			}, function(err) {
+				res.status(401).json({
+					error   : 'Authentication Error',
+					message : err.message
+				});
+			});
+	});
+
 // Basic table routes
 api_router.route('/:table')
 
@@ -125,6 +141,6 @@ api_router.route('/:table/:id')
 app.use('/api', api_router);
 
 // Start listening for traffic
-app.listen(3000, function() {
+app.listen(80, function() {
 	console.log('Listening on port 3000...');
 });

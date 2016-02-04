@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Today List: Dashboard</title>
+	<link rel="stylesheet" href="assets/styles.css">
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+	<script src="node_modules/moment/min/moment.min.js"></script>
+	<script>
+		// Show today's date
+		$(function() {
+			$('.today').text(moment().format('ddd - MMM D, YYYY'));
+		})
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<h1>Today List :)</h1>
+		</header>
+		<div id="today-list">
+			<h2>Your To-Do's for <span class="today"></span></h2>
+			<div class="tool">
+				<button type="button">Add To-Do</button>
+			</div>
+			<div class="tasks">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

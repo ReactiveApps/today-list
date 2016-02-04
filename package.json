@@ -18,10 +18,14 @@
   "homepage": "https://github.com/ReactiveApps/today-list#readme",
   "dependencies": {
     "async": "^1.5.2",
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.3",
-    "lodash": "^4.0.0",
+    "jquery": "^2.2.0",
+    "jwt-simple": "^0.4.1",
+    "lodash": "^4.2.1",
+    "moment-timezone": "^0.5.0",
     "rethinkdb": "^2.2.1",
     "rethinkdbdash": "^2.2.17"
   }

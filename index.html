@@ -2,11 +2,42 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>My Test Page</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
+	<title>Today List</title>
+	<link rel="stylesheet" href="assets/styles.css">
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script>
+		// Login to the website
+		function login() {
+
+		}
+
+		// Set focus on email input on load
+		$(function() {
+			$('#form-login--email').focus();
+		});
+	</script>
 </head>
 <body>
-	<h1>Test Page</h1>
-	<p>This is a test page</p>
+	<div id="wrapper">
+		<header>
+			<h1>Today List :)</h1>
+		</header>
+		<div id="login">
+			<form name="login" id="form-login" onsubmit="return login()">
+				<h2>Login</h2>
+				<p id="error-msg"></p>
+				<div class="control">
+					<label for="email">Email Address:</label>
+					<input type="text" name="email" id="form-login--email" placeholder="john.doe@gmail.com">
+				</div>
+				<div class="control">
+					<label for="password">Password:</label>
+					<input type="password" name="password" id="form-login--password">
+				</div>
+				<button type="submit">Login</button>
+				<p class="forgot-password">Forgot your password?  That sucks.</p>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
