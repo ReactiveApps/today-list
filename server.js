@@ -10,9 +10,33 @@ var _       = require('lodash');
 var DB      = require('lib/DB');
 var express = require('express');
 var fs      = require('fs');
+var moment  = require('moment-timezone');
 
 // Initialize express app
 var app = express();
+
+app.set('view engine', 'ejs');
+
+app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
+
+// Site Router
+var site_router = express.Router();
+
+// Login route
+site_router.route('/')
+	.get(function(req, res) {
+		res.render('login');
+	});
+
+// Main list route
+site_router.route('/today')
+	.get(function(req, res) {
+		res.render('list', {
+			today : moment().format('ddd - MMM D, YYYY')
+		});
+	});
+
 
 // API Router
 var api_router = express.Router();
@@ -137,10 +161,13 @@ api_router.route('/:table/:id')
 
 	});
 
+// Assign site routes to the root
+app.use('/', site_router);
+
 // Assign API routes to the api sub-folder
 app.use('/api', api_router);
 
 // Start listening for traffic
-app.listen(80, function() {
+app.listen(3000, function() {
 	console.log('Listening on port 3000...');
 });
