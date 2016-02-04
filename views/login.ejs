@@ -7,8 +7,36 @@
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<script>
 		// Login to the website
-		function login() {
-			
+		function loginUser() {
+			var email    = $('#form-login--email').val();
+			var password = $('#form-login--password').val();
+
+			var formData = {};
+			formData.email = email;
+			formData.password = password;
+
+			if (email != '' && password != '') {
+				$.ajax({
+					url: 'http://localhost:3000/api/auth',
+					data: JSON.stringify(formData),
+					contentType: 'application/json',
+					method: 'POST',
+					success: function(data) {
+						console.log(data);
+					},
+					error: function(xhr) {
+						var data = xhr.responseJSON;
+						$('#error-msg').text(data.error + ': ' + data.message);
+					}
+				});
+			}
+
+			// Email and password was not provided
+			else {
+				$('#error-msg').text('Email and password are required');
+			}
+
+			return false;
 		}
 
 		// Set focus on email input on load
@@ -23,7 +51,7 @@
 			<h1>Today List :)</h1>
 		</header>
 		<div id="login">
-			<form name="login" id="form-login" onsubmit="return login()">
+			<form name="login" id="form-login" onsubmit="return loginUser()">
 				<h2>Login</h2>
 				<p id="error-msg"></p>
 				<div class="control">

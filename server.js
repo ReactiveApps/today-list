@@ -11,6 +11,7 @@ var DB      = require('lib/DB');
 var express = require('express');
 var fs      = require('fs');
 var moment  = require('moment-timezone');
+var r       = require('lib/DB/r');
 
 // Initialize express app
 var app = express();
@@ -44,6 +45,11 @@ var api_router = express.Router();
 // Use the JSON body parser for all API routes
 api_router.use('/', require('body-parser').json());
 
+// api_router.use('/', function(req, res, next) {
+// 	console.log(req);
+// 	next();
+// });
+
 // API Home
 api_router.route('/')
 	.get(function(req, res) {
@@ -55,7 +61,7 @@ api_router.route('/')
 // Auth route
 api_router.route('/auth')
 	.post(function(req, res) {
-		DB.UsersService.auth(req.body.email, req.body.password)
+		DB.users.auth(req.body.email, req.body.password)
 			.then(function(token) {
 				res.status(200).json({
 					token : token
