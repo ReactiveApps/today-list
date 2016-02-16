@@ -4,7 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Today List: Dashboard</title>
 	<link rel="stylesheet" href="/assets/styles.css">
+	<script src="/assets/utils.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="/node_modules/moment/moment.js"></script>
 	<script>
 		
 	</script>
@@ -20,7 +22,11 @@
 				<button type="button">Add To-Do</button>
 			</div>
 			<div class="tasks">
-				
+				<ul>
+				<% tasks.forEach(function(task) { %>
+					<li><input type="checkbox" /> <%= task.title %></li>
+				<% }); %>
+				</ul>
 			</div>
 		</div>
 	</div>

@@ -33,9 +33,20 @@ site_router.route('/')
 // Main list route
 site_router.route('/today')
 	.get(function(req, res) {
-		res.render('list', {
-			today : moment().format('ddd - MMM D, YYYY')
-		});
+		var date = moment().format('YYYY-MM-DD');
+
+		console.log(date);
+
+		DB.lists.getByDate(date)
+			.then(function(list) {
+				return DB.tasks.getByList(list.id);
+			})
+			.then(function(tasks) {
+				res.render('list', {
+					today : moment().format('ddd - MMM D, YYYY'),
+					tasks : tasks
+				});
+			});
 	});
 
 

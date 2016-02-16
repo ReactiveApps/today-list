@@ -4,13 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Today List</title>
 	<link rel="stylesheet" href="/assets/styles.css">
+	<script src="/assets/utils.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="/node_modules/moment/moment.js"></script>
 	<script>
 		// Login to the website
 		function loginUser() {
 			var email    = $('#form-login--email').val();
 			var password = $('#form-login--password').val();
 
+			// Add in properties manually to make it work
 			var formData = {};
 			formData.email = email;
 			formData.password = password;
@@ -22,7 +25,8 @@
 					contentType: 'application/json',
 					method: 'POST',
 					success: function(data) {
-						console.log(data);
+						setCookie('token', data.token, 30);
+						window.location = '/today';
 					},
 					error: function(xhr) {
 						var data = xhr.responseJSON;
